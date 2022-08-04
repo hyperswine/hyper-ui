@@ -1,5 +1,5 @@
 use dioxus::{events::onclick, prelude::*};
-use hyper_ui::{Flex, FlexDir};
+use hyper_ui::{Col, Flex, Row};
 
 fn main() {
     dioxus::desktop::launch_cfg(app, |cfg| {
@@ -10,8 +10,6 @@ fn main() {
 fn app(cx: Scope) -> Element {
     let window = dioxus::desktop::use_window(&cx);
     let fullscreen = use_state(&cx, || false);
-    let always_on_top = use_state(&cx, || false);
-    let decorations = use_state(&cx, || true);
 
     window.set_resizable(true);
     // window.set_title("Hyper UI");
@@ -27,8 +25,13 @@ fn app(cx: Scope) -> Element {
             "This is Hyper UI"
         }
         Flex {
-            flex: FlexDir::Row,
-            "This is a flex container"
+            flex: Row,
+            div {
+                "This is flex container 2",
+            }
+            div {
+                "This should be in a col"
+            }
         }
     ))
 }
