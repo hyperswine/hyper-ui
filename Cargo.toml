@@ -9,5 +9,9 @@ license-file = "LICENSE"
 [[example]]
 name = "main"
 
+[workspace]
+members = ["macros"]
+
 [dependencies]
-dioxus = { version = "0.2.3", features = ["desktop"] }
+dioxus = { version = "0.2.4", features = ["desktop", "fermi", "router"] }
+hyper-macros = { path = "macros" }
