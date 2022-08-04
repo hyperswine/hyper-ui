@@ -6,4 +6,8 @@ description = "A chakra-ui like library for dioxus"
 authors = ["Jason Qin"]
 license-file = "LICENSE"
 
+[[example]]
+name = "main"
+
 [dependencies]
+dioxus = { version = "0.2.3", features = ["desktop"] }
