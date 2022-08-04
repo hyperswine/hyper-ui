@@ -29,11 +29,22 @@ pub struct FlexProps<'a> {
 }
 
 pub fn Flex<'a>(cx: Scope<'a, FlexProps<'a>>) -> Element {
-    cx.render(rsx!(div {
-        flex_direction: "{cx.props.flex}",
-        display: "flex",
-        &cx.props.children
-    }))
+    // render! doesnt work here
+    // cx.render(rsx!(div {
+    //     flex_direction: "{cx.props.flex}",
+    //     display: "flex",
+    //     &cx.props.children
+    // }))
+    // cx should be passed in somehow..., attached somehow I meant
+    // maybe another macro? to append a $cx.props.children somewhere in the scope
+
+    render_hyper!(
+        cx,
+        {
+            flex_direction: "{cx.props.flex}",
+            display: "flex",
+        }
+    )
 }
 
 #[derive(Props)]
@@ -42,9 +53,7 @@ pub struct BoxProps<'a> {
 }
 
 pub fn Box<'a>(cx: Scope<'a, BoxProps<'a>>) -> Element {
-    cx.render(rsx!(div {
-        &cx.props.children
-    }))
+    render!(cx, { &cx.props.children })
 }
 
 // Animations
@@ -57,6 +66,21 @@ pub fn Box<'a>(cx: Scope<'a, BoxProps<'a>>) -> Element {
 macro_rules! render {
     ($cx:expr, $input:tt) => {
         $cx.render(rsx!(div $input))
+    };
+}
+
+// maybe pass the stuff in between {} in input. Match a literal "{" and "}"
+// and pass that in
+// macro_rules! reorder_body {
+//     ($input:tt) => {
+
+//     };
+// }
+
+#[macro_export]
+macro_rules! render_hyper {
+    ($cx:expr, $input:block) => {
+        $cx.render(rsx!(div {$input, &$cx.props.children}))
     };
 }
 
