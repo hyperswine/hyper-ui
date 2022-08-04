@@ -1,0 +1,14 @@
+[package]
+name = "hyper-macros"
+version = "0.1.0"
+edition = "2021"
+authors = ["Jason Qin"]
+description = "Procedural macros for Hyper UI"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+dioxus = { version = "0.2.4", features = ["desktop", "fermi", "router"] }
+syn = "*"
+quote = "*"
