@@ -1,0 +1,9 @@
+[package]
+name = "hyper-ui"
+version = "0.1.0"
+edition = "2021"
+description = "A chakra-ui like library for dioxus"
+authors = ["Jason Qin"]
+license-file = "LICENSE"
+
+[dependencies]
