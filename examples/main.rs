@@ -1,5 +1,5 @@
 use dioxus::{events::onclick, prelude::*};
-use hyper_ui::{Col, Flex, Row};
+use hyper_ui::{Col, Flex, Row, Box};
 
 fn main() {
     dioxus::desktop::launch_cfg(app, |cfg| {
@@ -32,6 +32,9 @@ fn app(cx: Scope) -> Element {
             div {
                 "This should be in a col"
             }
+        }
+        Box {
+            "Hi this is a box"
         }
     ))
 }
