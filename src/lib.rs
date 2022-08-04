@@ -55,8 +55,15 @@ pub fn Box<'a>(cx: Scope<'a, BoxProps<'a>>) -> Element {
 
 #[macro_export]
 macro_rules! render {
-    ($input:tt) => {
-        cx.render(rsx!($input))
+    ($cx:expr, $input:tt) => {
+        $cx.render(rsx!(div $input))
+    };
+}
+
+#[macro_export]
+macro_rules! render_plain {
+    ($cx:expr, $outer_component:ident $body:tt) => {
+        $cx.render(rsx!($outer_component $body))
     };
 }
 
@@ -64,7 +71,7 @@ macro_rules! render {
 
 #[macro_export]
 macro_rules! component {
-    ($name:ident,$body:tt) => {
+    ($name:ident,$body:vis) => {
         #[derive(Props)]
         pub struct $ident<'a> {
             $body,
