@@ -16,3 +16,10 @@ pub fn hyper_props(body: TokenStream) -> TokenStream {
 pub fn hyper_component(attr: TokenStream, item: TokenStream) -> TokenStream {
     attr
 }
+
+// function component, simply create your function name like Name
+// and your pair struct Name, which becomes NameProps automatically
+// in your body, use the render!() macro to return cx.render(rsx!($body))
+// oh I think in the macro you need dioxus_elements::div
+
+// I dont think you can export normal macros
