@@ -30,21 +30,26 @@ pub struct FlexProps<'a> {
 
 pub fn Flex<'a>(cx: Scope<'a, FlexProps<'a>>) -> Element {
     // render! doesnt work here
-    // cx.render(rsx!(div {
-    //     flex_direction: "{cx.props.flex}",
-    //     display: "flex",
-    //     &cx.props.children
-    // }))
+    cx.render(rsx!(div {
+        flex_direction: "{cx.props.flex}",
+        display: "flex",
+        &cx.props.children
+    }))
     // cx should be passed in somehow..., attached somehow I meant
     // maybe another macro? to append a $cx.props.children somewhere in the scope
 
-    render_hyper!(
-        cx,
-        {
-            flex_direction: "{cx.props.flex}",
-            display: "flex",
-        }
-    )
+    // the key problem is {cx.props.flex}
+    // let dir = "{cx.props.flex}";
+    // that gets expanded by rsx!
+
+    // render!(
+    //     cx,
+    //     {
+    //         flex_direction: "{cx.props.flex}",
+    //         display: "flex",
+    //         &cx.props.children
+    //     }
+    // )
 }
 
 #[derive(Props)]
@@ -105,3 +110,6 @@ macro_rules! component {
 }
 
 // maybe a derive macro for the actual component itself
+
+#[test]
+fn test_macros() {}

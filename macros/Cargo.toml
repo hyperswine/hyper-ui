@@ -10,5 +10,6 @@ proc-macro = true
 
 [dependencies]
 dioxus = { version = "0.2.4", features = ["desktop", "fermi", "router"] }
-syn = "*"
+syn = { version = "1.0.99", features = ["full"] }
 quote = "*"
+proc-macro2 = "1.0.43"
