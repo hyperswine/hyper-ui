@@ -18,3 +18,4 @@ hyper-macros = { path = "macros" }
 
 [dev-dependencies]
 dioxus = { version = "0.2.4", features = ["desktop", "fermi", "router"] }
+yew = "0.19.3"
