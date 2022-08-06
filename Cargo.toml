@@ -7,15 +7,19 @@ authors = ["Jason Qin"]
 license-file = "LICENSE"
 
 [[example]]
-name = "main"
+name = "dioxus-demo"
 
 [workspace]
 members = ["macros"]
 
 [dependencies]
 dioxus = { version = "0.2.4", features = ["fermi", "router"] }
-hyper-macros = { path = "macros" }
+hyper-macros = { path = "macros", optional = true }
 
 [dev-dependencies]
 dioxus = { version = "0.2.4", features = ["desktop", "fermi", "router"] }
 yew = "0.19.3"
+
+[features]
+default = []
+macros = ["dep:hyper-macros"]
