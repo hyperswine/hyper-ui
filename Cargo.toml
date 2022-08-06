@@ -9,6 +9,9 @@ license-file = "LICENSE"
 [[example]]
 name = "dioxus-demo"
 
+[[example]]
+name = "yew-demo"
+
 [workspace]
 members = ["macros"]
 
